@@ -50,10 +50,6 @@ resource "aws_iam_user" "veeam" {
   name = "s3-veaam"
 }
 
-resource "aws_iam_access_key" "veeam-name" {
-  user    = aws_iam_user.veeam.name
-  pgp_key = file("/mnt/c/Users/dio/Documents/pti/terraform/publicbase64.key")
-}
 
 data "aws_iam_policy_document" "veeam_ro" {
   statement {
