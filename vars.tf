@@ -28,6 +28,9 @@ variable "t3" {
 }
 
 variable "ubuntu" {
-  default = "ami-0fc5d935ebf8bc3bc"
+  default = "ami-0e86e20dae9224db8"
 }
 
+variable "key" {
+  default = "${local.name}-key"
+}

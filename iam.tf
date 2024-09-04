@@ -28,7 +28,7 @@ resource "aws_iam_role" "role" {
 
 resource "aws_iam_role_policy_attachment" "ssm-policy" {
   role       = aws_iam_role.role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 resource "aws_iam_role_policy_attachment" "cwfull" {
