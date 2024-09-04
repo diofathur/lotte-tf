@@ -1,6 +1,6 @@
-resource "aws_security_group" "openvpn" {
-  name        = "${local.name}-openvpn"
-  description = "for openvpn vm"
+resource "aws_security_group" "pritunl" {
+  name        = "sg-${local.name}-pritunl"
+  description = "for pritunl vm"
   vpc_id      = aws_vpc.main.id
 
   ingress {

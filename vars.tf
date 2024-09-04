@@ -31,6 +31,3 @@ variable "ubuntu" {
   default = "ami-0e86e20dae9224db8" //change this if you using another operating system 
 }
 
-variable "key" {
-  default = "pti-key" //change this or disable this if you don't want to use it 
-}

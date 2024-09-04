@@ -47,20 +47,20 @@ resource "aws_iam_role_policy_attachment" "ec2" {
 }
 
 resource "aws_iam_user" "veeam" {
-  name = "s3-veaam"
+  name = "s3-veaam" // don't forget to change this name 
 }
 
 
 data "aws_iam_policy_document" "veeam_ro" {
   statement {
     effect    = "Allow"
-    actions   = ["s3:*"]
+    actions   = ["s3:PutObject","s3:GetObject","s3:DeleteObject","s3:GetBucketLocation","s3:GetBucketVersioning","s3:GetBucketObjectLockConfiguration","s3:ListAllMyBuckets","s3:ListBucket"]
     resources = ["*"]
   }
 }
 
 resource "aws_iam_user_policy" "veeam-policy" {
-  name   = "veeam-policy"
+  name   = "veeam-policy" // don't forget to change this name 
   user   = aws_iam_user.veeam.name
   policy = data.aws_iam_policy_document.veeam_ro.json
 }
