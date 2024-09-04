@@ -32,5 +32,5 @@ variable "ubuntu" {
 }
 
 variable "key" {
-  default = "${local.name}-key"
+  default = "pti-key"
 }
