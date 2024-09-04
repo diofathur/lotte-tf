@@ -8,9 +8,9 @@ resource "aws_instance" "pritunl" {
 
   root_block_device {
     delete_on_termination = true
-    # iops                  = 3000
-    volume_size = 30
-    volume_type = "gp2"
+    iops                  = 3000
+    volume_size = 50
+    volume_type = "gp3"
     encrypted   = true
   }
 

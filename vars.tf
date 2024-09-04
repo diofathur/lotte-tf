@@ -24,7 +24,7 @@ variable "region" {
 
 
 variable "t3" {
-  default = "t3.medium" //change this or disable this if you don't want to use it 
+  default = "t3.small" //change this or disable this if you don't want to use it 
 }
 
 variable "ubuntu" {
