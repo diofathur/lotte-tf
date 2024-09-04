@@ -10,7 +10,7 @@ resource "aws_subnet" "public" {
 
 resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = var.subnet[2]
+  cidr_block        = var.subnet[1]
   availability_zone = var.az[0]
   tags = {
     Name = "${local.name}-private-subnet"
