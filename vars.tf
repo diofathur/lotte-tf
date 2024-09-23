@@ -28,6 +28,6 @@ variable "t3" {
 }
 
 variable "ubuntu" {
-  default = "ami-0e86e20dae9224db8" //change this if you using another operating system 
+  default = "ami-0c1f9d5bae1d8ae80" //change this if you using another operating system 
 }
 

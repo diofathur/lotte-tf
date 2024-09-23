@@ -54,7 +54,7 @@ resource "aws_iam_user" "veeam" {
 data "aws_iam_policy_document" "veeam_ro" {
   statement {
     effect    = "Allow"
-    actions   = ["s3:PutObject","s3:GetObject","s3:DeleteObject","s3:GetBucketLocation","s3:GetBucketVersioning","s3:GetBucketObjectLockConfiguration","s3:ListAllMyBuckets","s3:ListBucket"]
+    actions   = ["s3:PutObject","s3:GetObject","s3:DeleteObject","s3:GetBucketLocation","s3:GetBucketVersioning","s3:GetBucketObjectLockConfiguration","s3:ListAllMyBuckets","s3:ListBucket","ec2:*"]
     resources = ["*"]
   }
 }
