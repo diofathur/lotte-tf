@@ -1,5 +1,5 @@
 variable "cidr" {
-  default = "10.121.0.0/16" // change this if you want to change the cidr
+  default = "10.0.0.0/16" // change this if you want to change the cidr
 }
 
 locals {
@@ -9,7 +9,7 @@ locals {
 # Variable for CIDR Subnet public, private, staging
 variable "subnet" {
   type    = list(any)
-  default = ["10.121.1.0/26", "10.121.2.0/26"] //change this following the cidr vpc
+  default = ["10.0.0.0/24", "10.0.1.0/24"] //change this following the cidr vpc
 }
 
 # Variable for Availability Zone

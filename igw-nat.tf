@@ -23,3 +23,4 @@ resource "aws_nat_gateway" "nat" {
     Name = "${local.name}-nat"
   }
 }
+
