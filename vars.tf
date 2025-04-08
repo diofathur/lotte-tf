@@ -15,11 +15,11 @@ variable "subnet" {
 # Variable for Availability Zone
 variable "az" {
   type    = list(any)
-  default = ["ap-southeast-3a", "ap-southeast-3b"] //change this following the home region
+  default = ["us-east-1a", "us-east-1b"] //change this following the home region
 }
 
 variable "region" {
-  default = "ap-southeast-3" //change this if you want to run to another region
+  default = "us-east-1" //change this if you want to run to another region
 }
 
 
