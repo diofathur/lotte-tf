@@ -1,15 +1,15 @@
 resource "aws_s3_bucket" "testing-s3" {
   bucket = "test-bucket-awasdwasdwaf" // don't forget to change this name 
-  object_lock_configuration {
-    object_lock_enabled = "Enabled"
+  # object_lock_configuration {
+  #   object_lock_enabled = "Enabled"
 
-    rule {
-      default_retention {
-        mode = "GOVERNANCE"
-        days = 365
-      }
-    }
-  }
+  #   rule {
+  #     default_retention {
+  #       mode = "GOVERNANCE"
+  #       days = 365
+  #     }
+  #   }
+  # }
 
   versioning {
     enabled = true
