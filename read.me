@@ -1,0 +1,106 @@
+Deployment Report
+Project Overview
+
+This report details the deployment of an AWS infrastructure using Terraform, configured to support a Pritunl VPN server with associated resources such as EC2 instances, IAM roles, S3 buckets, and networking components.
+Deployment Date
+
+    Date: 28/09/2024
+
+Prepared By
+
+    Name: Teuku Dio Fathur Rachman
+    Contact: teuko.rachman@berca.co.id
+
+Key Components
+1. AWS VPC
+
+    Resource: aws_vpc.main
+    CIDR Block: 10.0.0.0/16
+    Tags: Name set to ${local.name}-vpc
+
+2. Subnets
+
+    Public Subnet:
+        Resource: aws_subnet.public
+        CIDR Block: 10.0.0.0/24
+        Availability Zone: ap-southeast-3a
+    Private Subnet:
+        Resource: aws_subnet.private
+        CIDR Block: 10.0.1.0/24
+        Availability Zone: ap-southeast-3a
+
+3. EC2 Instance
+
+    Resource: aws_instance.pritunl
+    AMI: ami-0c1f9d5bae1d8ae80 (Ubuntu)
+    Instance Type: t3.small
+    IAM Instance Profile: Attached for access to SSM and CloudWatch
+    Root Block Device:
+        Size: 50 GiB
+        Type: gp3
+        IOPS: 3000
+        Encrypted: Yes
+    Tags: Name set to ${local.name}-pritunl-ec2
+
+4. Elastic IP and NAT Gateway
+
+    Elastic IP:
+        Resource: aws_eip.eip_pritunl
+        Attached Instance: Pritunl EC2 instance
+    NAT Gateway:
+        Resource: aws_nat_gateway.nat
+        Allocation ID: Linked to the Elastic IP
+
+5. S3 Bucket
+
+    Resource: aws_s3_bucket.name
+    Bucket Name: pti-veeam-backup-bucket
+    Versioning: Enabled
+    Object Lock Configuration:
+        Mode: GOVERNANCE
+        Retention Days: 365
+    Tags: Name set to pti-veeam-backup-bucket
+
+6. IAM Roles and Policies
+
+    IAM Role:
+        Resource: aws_iam_role.role
+        Policies Attached:
+            AmazonSSMManagedInstanceCore
+            CloudWatchFullAccess
+            CloudWatchAgentServerPolicy
+            AmazonEC2FullAccess
+    IAM User:
+        Resource: aws_iam_user.veeam
+        User Name: s3-veaam
+        Policy: Broad S3 and EC2 permissions (review recommended)
+
+7. Networking
+
+    Internet Gateway:
+        Resource: aws_internet_gateway.gateway_main
+    Route Tables:
+        Public Route Table: Routes internet traffic through the Internet Gateway.
+        Private Route Table: Routes traffic through the NAT Gateway for internet access from private subnets.
+    Security Group:
+        Resource: aws_security_group.pritunl
+        Ingress Rules:
+            Allow ICMP (All) from anywhere
+            Allow HTTPS (Port 443) from anywhere
+        Egress Rules: Allow all outbound traffic
+
+Recommendations
+
+    Security Enhancements:
+        Limit ICMP access to known IPs if possible.
+        Review and restrict IAM user policies to specific resources instead of *.
+
+    Naming Conventions:
+        Ensure all resource names and tags are updated and meaningful to improve manageability.
+
+    Outputs:
+        Consider adding output blocks to facilitate easy retrieval of key information after deployment.
+
+Conclusion
+
+The deployment successfully provisions an AWS infrastructure with necessary components to host a Pritunl VPN server. Ongoing monitoring and periodic reviews of IAM permissions and network rules are recommended to maintain security and efficiency.
