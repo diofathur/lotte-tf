@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "name" {
   bucket = "pti-veeam-backup-bucket" // don't forget to change this name 
   object_lock_configuration {
-    object_lock_enabled = "enabled"
+    object_lock_enabled = "Enabled"
 
     rule {
       default_retention {
@@ -16,6 +16,6 @@ resource "aws_s3_bucket" "name" {
   }
 
   tags = {
-    Name = "pti-veeam-backup-bucket" // and this
+    Name = "test-bucket-awasdwasdwaf" // and this
   }
 }

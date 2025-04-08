@@ -1,5 +1,5 @@
 resource "aws_security_group" "pritunl" {
-  name        = "sg-${local.name}-pritunl"
+  name        = "${local.name}-pritunl"
   description = "for pritunl vm"
   vpc_id      = aws_vpc.main.id
 
