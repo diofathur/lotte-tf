@@ -64,3 +64,5 @@ resource "aws_iam_user_policy" "veeam-policy" {
   user   = aws_iam_user.veeam.name
   policy = data.aws_iam_policy_document.veeam_ro.json
 }
+
+

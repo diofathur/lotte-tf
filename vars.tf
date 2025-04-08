@@ -3,7 +3,7 @@ variable "cidr" {
 }
 
 locals {
-  name = "pti" //change this for name 
+  name = "lotte" //change this for name 
 }
 
 # Variable for CIDR Subnet public, private, staging
@@ -15,11 +15,11 @@ variable "subnet" {
 # Variable for Availability Zone
 variable "az" {
   type    = list(any)
-  default = ["us-east-1a", "us-east-1b"] //change this following the home region
+  default = ["ap-southeast-3a", "ap-southeast-3b"] //change this following the home region
 }
 
 variable "region" {
-  default = "us-east-1" //change this if you want to run to another region
+  default = "ap-southeast-3" //change this if you want to run to another region
 }
 
 
