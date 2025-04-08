@@ -16,12 +16,12 @@ resource "aws_route_table" "rt-public" {
 resource "aws_route_table" "rt-private" {
   vpc_id = aws_vpc.main.id
 
-  route {
-    # add Destination
-    cidr_block = "0.0.0.0/0"
-    # for the target
-    nat_gateway_id = aws_nat_gateway.nat.id
-  }
+  # route {
+  #   # add Destination
+  #   cidr_block = "0.0.0.0/0"
+  #   # for the target
+  #   nat_gateway_id = aws_nat_gateway.nat.id
+  # }
 
   tags = {
     Name = "${local.name}-rt-private"
